@@ -1,0 +1,177 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Rabbitwingz//Football-ICS//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Brighton & Hove Albion
+X-WR-CALDESC:Confirmed upcoming Brighton & Hove Albion fixtures (PL\, EFL C
+ up\, UCL) in IST
+X-WR-TIMEZONE:Asia/Kolkata
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VTIMEZONE
+TZID:Asia/Kolkata
+BEGIN:STANDARD
+DTSTART:19700101T000000
+TZOFFSETFROM:+0530
+TZOFFSETTO:+0530
+TZNAME:IST
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:pl-2645286@football-ics.rabbitwingz.github.io
+DTSTAMP:20261031T194721Z
+SEQUENCE:0
+DTSTART;TZID=Asia/Kolkata:20261108T193000
+DTEND;TZID=Asia/Kolkata:20261108T213000
+SUMMARY:⚽ PL - Brighton & Hove Albion vs Brentford
+LOCATION:American Express Stadium\, Falmer
+DESCRIPTION:Premier League - Matchweek 10\nKick-off: Sun 08 Nov 2026\, 19:3
+ 0 IST
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:pl-2645300@football-ics.rabbitwingz.github.io
+DTSTAMP:20261031T194721Z
+SEQUENCE:0
+DTSTART;TZID=Asia/Kolkata:20261122T193000
+DTEND;TZID=Asia/Kolkata:20261122T213000
+SUMMARY:⚽ PL - Hull City vs Brighton & Hove Albion
+LOCATION:MKM Stadium\, Hull
+DESCRIPTION:Premier League - Matchweek 11\nKick-off: Sun 22 Nov 2026\, 19:3
+ 0 IST
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:pl-2645306@football-ics.rabbitwingz.github.io
+DTSTAMP:20261031T194721Z
+SEQUENCE:0
+DTSTART;TZID=Asia/Kolkata:20261129T193500
+DTEND;TZID=Asia/Kolkata:20261129T213500
+SUMMARY:⚽ PL - Brighton & Hove Albion vs Newcastle United
+LOCATION:American Express Stadium\, Falmer
+DESCRIPTION:Premier League - Matchweek 12\nKick-off: Sun 29 Nov 2026\, 19:3
+ 5 IST
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:pl-2645315@football-ics.rabbitwingz.github.io
+DTSTAMP:20261031T194721Z
+SEQUENCE:0
+DTSTART;TZID=Asia/Kolkata:20261203T014500
+DTEND;TZID=Asia/Kolkata:20261203T034500
+SUMMARY:⚽ PL - Bournemouth vs Brighton & Hove Albion
+LOCATION:Vitality Stadium\, Bournemouth
+DESCRIPTION:Premier League - Matchweek 13\nKick-off: Thu 03 Dec 2026\, 01:4
+ 5 IST
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:pl-2645333@football-ics.rabbitwingz.github.io
+DTSTAMP:20261031T194721Z
+SEQUENCE:0
+DTSTART;TZID=Asia/Kolkata:20261205T230000
+DTEND;TZID=Asia/Kolkata:20261206T010000
+SUMMARY:⚽ PL - Nottingham Forest vs Brighton & Hove Albion
+LOCATION:The City Ground\, Nottingham
+DESCRIPTION:Premier League - Matchweek 14\nKick-off: Sat 05 Dec 2026\, 23:0
+ 0 IST
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:pl-2645336@football-ics.rabbitwingz.github.io
+DTSTAMP:20261031T194721Z
+SEQUENCE:0
+DTSTART;TZID=Asia/Kolkata:20261213T193000
+DTEND;TZID=Asia/Kolkata:20261213T213000
+SUMMARY:⚽ PL - Brighton & Hove Albion vs Everton
+LOCATION:American Express Stadium\, Falmer
+DESCRIPTION:Premier League - Matchweek 15\nKick-off: Sun 13 Dec 2026\, 19:3
+ 0 IST
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:pl-2645348@football-ics.rabbitwingz.github.io
+DTSTAMP:20261031T194721Z
+SEQUENCE:0
+DTSTART;TZID=Asia/Kolkata:20261220T193000
+DTEND;TZID=Asia/Kolkata:20261220T213000
+SUMMARY:⚽ PL - Brighton & Hove Albion vs Ipswich Town
+LOCATION:American Express Stadium\, Falmer
+DESCRIPTION:Premier League - Matchweek 16\nKick-off: Sun 20 Dec 2026\, 19:3
+ 0 IST
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:pl-2645359@football-ics.rabbitwingz.github.io
+DTSTAMP:20261031T194721Z
+SEQUENCE:0
+DTSTART;TZID=Asia/Kolkata:20261226T203000
+DTEND;TZID=Asia/Kolkata:20261226T223000
+SUMMARY:⚽ PL - Fulham vs Brighton & Hove Albion
+LOCATION:Craven Cottage\, London
+DESCRIPTION:Premier League - Matchweek 17\nKick-off: Sat 26 Dec 2026\, 20:3
+ 0 IST
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:pl-2645374@football-ics.rabbitwingz.github.io
+DTSTAMP:20261031T194721Z
+SEQUENCE:0
+DTSTART;TZID=Asia/Kolkata:20261230T010000
+DTEND;TZID=Asia/Kolkata:20261230T030000
+SUMMARY:⚽ PL - Tottenham Hotspur vs Brighton & Hove Albion
+LOCATION:Tottenham Hotspur Stadium\, London
+DESCRIPTION:Premier League - Matchweek 18\nKick-off: Wed 30 Dec 2026\, 01:0
+ 0 IST
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:pl-2645378@football-ics.rabbitwingz.github.io
+DTSTAMP:20261031T194721Z
+SEQUENCE:0
+DTSTART;TZID=Asia/Kolkata:20270102T180000
+DTEND;TZID=Asia/Kolkata:20270102T200000
+SUMMARY:⚽ PL - Brighton & Hove Albion vs Manchester United
+LOCATION:American Express Stadium\, Falmer
+DESCRIPTION:Premier League - Matchweek 19\nKick-off: Sat 02 Jan 2027\, 18:0
+ 0 IST
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:pl-2645386@football-ics.rabbitwingz.github.io
+DTSTAMP:20261031T194721Z
+SEQUENCE:0
+DTSTART;TZID=Asia/Kolkata:20270106T010000
+DTEND;TZID=Asia/Kolkata:20270106T030000
+SUMMARY:⚽ PL - Brighton & Hove Albion vs Bournemouth
+LOCATION:American Express Stadium\, Falmer
+DESCRIPTION:Premier League - Matchweek 20\nKick-off: Wed 06 Jan 2027\, 01:0
+ 0 IST
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:pl-2645565@football-ics.rabbitwingz.github.io
+DTSTAMP:20261031T194721Z
+SEQUENCE:0
+DTSTART;TZID=Asia/Kolkata:20270530T203000
+DTEND;TZID=Asia/Kolkata:20270530T223000
+SUMMARY:⚽ PL - Arsenal vs Brighton & Hove Albion
+LOCATION:Emirates Stadium\, London
+DESCRIPTION:Premier League - Matchweek 38\nKick-off: Sun 30 May 2027\, 20:3
+ 0 IST
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR
