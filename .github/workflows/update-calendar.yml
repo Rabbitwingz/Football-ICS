@@ -41,3 +41,15 @@ jobs:
             git commit -m "Update Brighton fixtures"
             git push
           fi
+
+      # GitHub pauses scheduled workflows after 60 days without repository activity.
+      # During quiet spells (e.g. the off-season) an empty commit keeps the schedule alive.
+      - name: Keep schedule alive
+        run: |
+          last=$(git log -1 --format=%ct)
+          if [ $(( $(date +%s) - last )) -gt $(( 45 * 24 * 3600 )) ]; then
+            git commit --allow-empty -m "Keepalive: prevent GitHub pausing scheduled runs"
+            git push
+          else
+            echo "Last commit is recent; no keepalive needed."
+          fi
