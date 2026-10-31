@@ -225,7 +225,7 @@ def build_ics(fixtures: list[dict]) -> str:
         "PRODID:-//Rabbitwingz//Football-ICS//EN",
         "CALSCALE:GREGORIAN",
         "METHOD:PUBLISH",
-        "X-WR-CALNAME:Brighton & Hove Albion",
+        "X-WR-CALNAME:Football",
         "X-WR-CALDESC:Confirmed upcoming Brighton & Hove Albion fixtures (PL\\, EFL Cup\\, UCL) in IST",
         "X-WR-TIMEZONE:Asia/Kolkata",
         "REFRESH-INTERVAL;VALUE=DURATION:PT6H",
