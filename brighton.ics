@@ -149,6 +149,45 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
+UID:pl-2645397@football-ics.rabbitwingz.github.io
+DTSTAMP:20261119T203834Z
+SEQUENCE:0
+DTSTART;TZID=Asia/Kolkata:20270119T013000
+DTEND;TZID=Asia/Kolkata:20270119T033000
+SUMMARY:⚽ PL - Brentford vs Brighton & Hove Albion
+LOCATION:Gtech Community Stadium\, Brentford
+DESCRIPTION:Premier League - Matchweek 21\nKick-off: Tue 19 Jan 2027\, 01:3
+ 0 IST
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:pl-2645406@football-ics.rabbitwingz.github.io
+DTSTAMP:20261119T203834Z
+SEQUENCE:0
+DTSTART;TZID=Asia/Kolkata:20270124T013000
+DTEND;TZID=Asia/Kolkata:20270124T033000
+SUMMARY:⚽ PL - Brighton & Hove Albion vs Manchester City
+LOCATION:American Express Stadium\, Falmer
+DESCRIPTION:Premier League - Matchweek 22\nKick-off: Sun 24 Jan 2027\, 01:3
+ 0 IST
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:pl-2645423@football-ics.rabbitwingz.github.io
+DTSTAMP:20261119T203834Z
+SEQUENCE:0
+DTSTART;TZID=Asia/Kolkata:20270130T203000
+DTEND;TZID=Asia/Kolkata:20270130T223000
+SUMMARY:⚽ PL - Newcastle United vs Brighton & Hove Albion
+LOCATION:St. James' Park\, Newcastle
+DESCRIPTION:Premier League - Matchweek 23\nKick-off: Sat 30 Jan 2027\, 20:3
+ 0 IST
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
 UID:pl-2645565@football-ics.rabbitwingz.github.io
 DTSTAMP:20261031T194721Z
 SEQUENCE:0
