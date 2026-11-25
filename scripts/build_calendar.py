@@ -2,9 +2,11 @@
 """Build a subscribable .ics feed of confirmed, upcoming Brighton & Hove Albion fixtures.
 
 Sources
-  PL  - Premier League's own match API (sdp-prem-prod.premier-league-prod.pulselive.com)
-  EFL - ESPN public API, league "eng.league_cup"
-  CL  - ESPN public API, league "uefa.champions"
+  PL   - Premier League's own match API (sdp-prem-prod.premier-league-prod.pulselive.com)
+  FA   - ESPN public API, league "eng.fa"
+  EFL  - ESPN public API, league "eng.league_cup"
+  CL   - ESPN public API, league "uefa.champions"
+  CONF - ESPN public API, league "uefa.europa.conf"
 
 Confirmation rules (never guess a date or kickoff time)
   PL  - At release the PL parks every match in a matchweek in a single placeholder slot
@@ -38,8 +40,14 @@ STATE_PATH = ROOT / "state.json"
 TEAM_NAME = "Brighton & Hove Albion"
 PL_TEAM_ID = "36"
 ESPN_TEAM_ID = "331"
-ESPN_LEAGUES = {"EFL": "eng.league_cup", "CL": "uefa.champions"}
-COMPETITION_NAMES = {"PL": "Premier League", "EFL": "EFL Cup", "CL": "UEFA Champions League"}
+ESPN_LEAGUES = {"FA": "eng.fa", "EFL": "eng.league_cup", "CL": "uefa.champions", "CONF": "uefa.europa.conf"}
+COMPETITION_NAMES = {
+    "PL": "Premier League",
+    "FA": "FA Cup",
+    "EFL": "EFL Cup",
+    "CL": "UEFA Champions League",
+    "CONF": "UEFA Conference League",
+}
 
 PL_API = "https://sdp-prem-prod.premier-league-prod.pulselive.com/api/v2"
 ESPN_API = "https://site.api.espn.com/apis/site/v2/sports/soccer"
@@ -153,8 +161,11 @@ def espn_fixtures(code: str, league: str, now: datetime) -> list[dict]:
         venue = comp.get("venue") or {}
         city = (venue.get("address") or {}).get("city")
         location = ", ".join(p for p in (venue.get("fullName"), city) if p)
+        # ESPN usually leaves the note headline empty; the stage name ("League Phase",
+        # "Third Round", ...) lives on the event's seasonType instead.
         notes = comp.get("notes") or []
         round_name = (notes[0].get("headline") or "") if notes else ""
+        round_name = round_name or ((event.get("seasonType") or {}).get("name") or "")
         fixtures.append({
             "uid": f"espn-{code.lower()}-{event['id']}@{UID_DOMAIN}",
             "comp": code,
@@ -195,8 +206,26 @@ def fmt_ist(dt: datetime) -> str:
     return dt.astimezone(IST).strftime("%Y%m%dT%H%M%S")
 
 
+def fmt_kickoff_12h(dt: datetime) -> str:
+    """e.g. 'Thu 26 Nov 2026, 11:15 PM' (no leading zero on the hour, portable across OSes)."""
+    local = dt.astimezone(IST)
+    return f"{local:%a %d %b %Y}, {local:%I:%M %p}".replace(", 0", ", ")
+
+
+def event_text(f: dict) -> tuple[str, str]:
+    """The event's SUMMARY and DESCRIPTION, unescaped."""
+    summary = f"⚽ {f['comp']} - {f['home']} vs {f['away']}"
+    description = "\n".join([
+        COMPETITION_NAMES[f["comp"]] + (f" - {f['round']}" if f["round"] else ""),
+        f"Kick-off: {fmt_kickoff_12h(f['start'])} IST",
+    ])
+    return summary, description
+
+
 def fixture_fingerprint(f: dict) -> str:
-    key = "|".join([f["start"].isoformat(), f["location"], f["home"], f["away"]])
+    # Covers everything shown on the event, so a wording change also bumps SEQUENCE.
+    summary, description = event_text(f)
+    key = "|".join([f["start"].isoformat(), f["location"], summary, description])
     return hashlib.sha1(key.encode("utf-8")).hexdigest()
 
 
@@ -226,7 +255,7 @@ def build_ics(fixtures: list[dict]) -> str:
         "CALSCALE:GREGORIAN",
         "METHOD:PUBLISH",
         "X-WR-CALNAME:Football",
-        "X-WR-CALDESC:Confirmed upcoming Brighton & Hove Albion fixtures (PL\\, EFL Cup\\, UCL) in IST",
+        "X-WR-CALDESC:Confirmed upcoming Brighton & Hove Albion fixtures (PL\\, FA Cup\\, EFL Cup\\, UCL\\, Conference League) in IST",
         "X-WR-TIMEZONE:Asia/Kolkata",
         "REFRESH-INTERVAL;VALUE=DURATION:PT6H",
         "X-PUBLISHED-TTL:PT6H",
@@ -241,12 +270,7 @@ def build_ics(fixtures: list[dict]) -> str:
         "END:VTIMEZONE",
     ]
     for f in fixtures:
-        start_ist = f["start"].astimezone(IST)
-        summary = f"⚽ {f['comp']} - {f['home']} vs {f['away']}"
-        description = "\n".join(p for p in (
-            COMPETITION_NAMES[f["comp"]] + (f" - {f['round']}" if f["round"] else ""),
-            f"Kick-off: {start_ist:%a %d %b %Y, %H:%M} IST",
-        ) if p)
+        summary, description = event_text(f)
         lines += [
             "BEGIN:VEVENT",
             f"UID:{f['uid']}",
