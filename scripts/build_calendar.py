@@ -61,7 +61,12 @@ UID_DOMAIN = "football-ics.rabbitwingz.github.io"
 NAME_FIXES = {"Brighton and Hove Albion": TEAM_NAME}
 
 
-def fetch_json(url: str, retries: int = 3):
+# Waits between attempts. Free APIs and shared CI runners have short blips; riding out
+# ~4 minutes of them (plus each attempt's 30s timeout) beats failing the run and emailing.
+RETRY_DELAYS = (15, 30, 60, 120)
+
+
+def fetch_json(url: str, retries: int = len(RETRY_DELAYS) + 1):
     req = urllib.request.Request(url, headers={"User-Agent": "Football-ICS/1.0", "Accept": "application/json"})
     for attempt in range(retries):
         try:
@@ -70,7 +75,7 @@ def fetch_json(url: str, retries: int = 3):
         except Exception as exc:  # network blips are common on shared CI runners
             if attempt == retries - 1:
                 raise RuntimeError(f"GET {url} failed: {exc}") from exc
-            time.sleep(2 * (attempt + 1))
+            time.sleep(RETRY_DELAYS[attempt])
 
 
 def team_name(name: str) -> str:
